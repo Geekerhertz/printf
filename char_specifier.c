@@ -39,7 +39,7 @@ char *get_string(va_list args, char *mods)
 	char *ret;
 
 	(void)mods;
-	str = va_arg(args, char *)
+	str = va_arg(args, char *);
 
 	if (str)
 	{
