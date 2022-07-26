@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include "main.h"
 #include <stdlib.h>
 
@@ -127,7 +126,7 @@ int print_helper(printh_t *help_s, va_list args)
  * init_help_s - initializes print helper structure, creating space for it
  * @format: pointer to format specifier string to set as pointer
  * @args: va_list pointer, will be sent to free_all to have memory freed if a
- * malloc fails.
+ * malloc fails
  *
  * Return: pointer to structure created in memory
  */
@@ -197,52 +196,5 @@ void exit_busy_reset(printh_t *help_s, int reset_mods)
 		for (i = 0; i < 2; i++)
 			help_s->mods[i] = 0;
 	}
-=======
-#include "holberton.h"
-
-/**
- * _printf - produces output according to a format
- * @format: format string containing the characters and the specifiers
- * Description: this function will call the get_print() function that will
- * determine which printing function to call depending on the conversion
- * specifiers contained into fmt
- * Return: length of the formatted output string
- */
-int _printf(const char *format, ...)
-{
-	int (*pfunc)(va_list, flags_t *);
-	const char *p;
-	va_list arguments;
-	flags_t flags = {0, 0, 0};
-
-	register int count = 0;
-
-	va_start(arguments, format);
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
-	for (p = format; *p; p++)
-	{
-		if (*p == '%')
-		{
-			p++;
-			if (*p == '%')
-			{
-				count += _putchar('%');
-				continue;
-			}
-			while (get_flag(*p, &flags))
-				p++;
-			pfunc = get_print(*p);
-			count += (pfunc)
-				? pfunc(arguments, &flags)
-				: _printf("%%%c", *p);
-		} else
-			count += _putchar(*p);
-	}
-	_putchar(-1);
-	va_end(arguments);
-	return (count);
->>>>>>> 9ce1a069f3de33036067c0944f1e9e35c707f338
 }
+
